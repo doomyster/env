@@ -1,0 +1,89 @@
+"""""""""""""""""""""""""""""""""""
+" load pathogen to handle plugins "
+"""""""""""""""""""""""""""""""""""
+set nocompatible
+call pathogen#infect()
+call pathogen#helptags()
+
+"""""""""""""""""
+" basic options "
+"""""""""""""""""
+syntax on	" Syntax hilight
+set ai		" Automatic Indentation
+set si		" Smart intendation
+set showcmd	" Display current commands in left-bottom corner
+set list
+
+"""""""""
+" Spell "
+"""""""""
+" Got languages here, put them in ~/.vim/spell/ director:
+" wget http://ftp.vim.org/pub/vim/runtime/spell/fr.utf-8.sug
+" wget http://ftp.vim.org/pub/vim/runtime/spell/fr.utf-8.spl
+" wget http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl
+" wget http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.sug
+set spelllang=en,fr
+set spell
+set spellsuggest=5
+" Reminder: Shortcut for spellsuggestions is: z=
+
+"""""""""""""""""
+" Abbreviations "
+"""""""""""""""""
+iab #i #include
+iab #d #define
+iab #n #ifndef
+iab #e #endif
+
+""""""""""""""""""""""""""""""""""
+" Handling different tabs styles "
+""""""""""""""""""""""""""""""""""
+nmap <F4> :set shiftwidth=4<RETURN>:set tabstop=8<RETURN>:set softtabstop=4<RETURN>:set   expandtab<RETURN>
+nmap <F8> :set shiftwidth=8<RETURN>:set tabstop=8<RETURN>:set softtabstop=8<RETURN>:set noexpandtab<RETURN>
+
+"""""""""""""""
+" toggle keys "
+"""""""""""""""
+set pastetoggle=<F2>
+nmap <F3> :set list!<RETURN>
+
+""""""""""""""""""""""""
+" Invisible characters "
+""""""""""""""""""""""""
+set listchars=tab:▸\ ,eol:¬,nbsp:∎,trail:⎵
+
+""""""""""""""""""""
+" Keyboard mapping "
+""""""""""""""""""""
+nnoremap <C-left> gT
+nnoremap <C-right> gt
+
+"""""""""""""""
+" Status line "
+"""""""""""""""
+set laststatus=2 " status line always visible
+set statusline=%m%f%r%h%w\ %<[FMT=%{&ff}]\ [TYPE=%Y]\ \ \ \ \ [ASCII:\ %3b\ -\ 0x%02B]\ %=%l/%LL\ (%c-%v)\ off:%o\ %P%%\ \ \ \ 
+
+""""""""""""""""""""""""""""""""""""""""
+" Show hiligh group for current word ! "
+""""""""""""""""""""""""""""""""""""""""
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+""""""""""""""""""""""""""""""
+" Color scheme configuration "
+""""""""""""""""""""""""""""""
+set bg=dark	" Use appropriate colors on a dark background
+colorscheme crystal_cave
+
+""""""""""""""""""""""""""
+" Open completion method "
+""""""""""""""""""""""""""
+set wildmode=longest,list,full
+set wildmenu
+

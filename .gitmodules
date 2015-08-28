@@ -1,0 +1,9 @@
+[submodule "vim/pathogen"]
+	path = vim/pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "vim/bundle/easytags"]
+	path = vim/bundle/easytags
+	url = https://github.com/xolox/vim-easytags.git
+[submodule "vim/bundle/misc"]
+	path = vim/bundle/misc
+	url = https://github.com/xolox/vim-misc.git

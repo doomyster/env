@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# doomy's ENVIRON v@VERSION@
+
+if [ "$1" != "" ]; then
+	PORT=$1
+else
+	PORT=8000
+fi
+
+/sbin/ifconfig | grep -w inet | grep addr: | sed -e 's/^[^:]*://g' -e 's/[[:space:]].*//g' -e 's/^/http:\/\//g' -e "s/$/:$PORT\//g"
+
+python -m SimpleHTTPServer $PORT
+
