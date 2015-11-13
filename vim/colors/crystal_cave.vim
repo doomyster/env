@@ -27,6 +27,8 @@ hi Statement		ctermfg=11		ctermbg=none	cterm=bold
 hi link cStatement	Statement
 hi link Operator	Statement
 
+hi Function		ctermfg=51		ctermbg=none	cterm=bold
+
 " Define two commands to set comments to be rather dark, and rather visible. Then call one of these two commands.
 command HiComments hi Comment ctermfg=51  ctermbg=none cterm=none | hi link cComment Comment
 command LoComments hi Comment ctermfg=247 ctermbg=none cterm=none | hi link cComment Comment
