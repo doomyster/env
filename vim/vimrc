@@ -58,6 +58,15 @@ set listchars=tab:▸\ ,eol:¬,nbsp:∎,trail:⎵
 nnoremap <C-left> gT
 nnoremap <C-right> gt
 
+""""""""""""""""""""""""""""""""""
+" Move lines up or down one line "
+""""""""""""""""""""""""""""""""""
+nmap <C-Up> :m .-2<CR>
+nmap <C-Down> :m .+1<CR>
+vnoremap <C-Down> :m '>+1<CR>gv
+vnoremap <C-up> :m '<-2<CR>gv
+
+
 """""""""""""""
 " Status line "
 """""""""""""""
