@@ -9,9 +9,10 @@ call pathogen#helptags()
 " basic options "
 """""""""""""""""
 syntax on	" Syntax hilight
-set ai		" Automatic Indentation
-set si		" Smart intendation
-set showcmd	" Display current commands in left-bottom corner
+set ci          " CopyIndent, http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces
+set ai          " Automatic Indentation
+set si          " Smart intendation
+set showcmd     " Display current commands in left-bottom corner
 set list
 
 """""""""
