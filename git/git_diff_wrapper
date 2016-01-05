@@ -1,6 +1,4 @@
 #!/bin/sh
 
-# doomy's ENVIRON v@VERSION@
-
 vimdiff "$2" "$5"
 
