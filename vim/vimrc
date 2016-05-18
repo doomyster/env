@@ -14,6 +14,7 @@ set ai          " Automatic Indentation
 set si          " Smart intendation
 set showcmd     " Display current commands in left-bottom corner
 set list
+set backspace=indent,eol,start
 
 """""""""
 " Spell "
@@ -51,7 +52,7 @@ nmap <F3> :set list!<RETURN>
 """"""""""""""""""""""""
 " Invisible characters "
 """"""""""""""""""""""""
-set listchars=tab:▸\ ,eol:¬,nbsp:∎,trail:⎵
+set listchars=tab:▸\ ,eol:¬,nbsp:∎,trail:␣
 
 """"""""""""""""""""
 " Keyboard mapping "
