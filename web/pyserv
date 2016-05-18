@@ -6,7 +6,10 @@ else
 	PORT=8000
 fi
 
-/sbin/ifconfig | grep -w inet | grep addr: | sed -e 's/^[^:]*://g' -e 's/[[:space:]].*//g' -e 's/^/http:\/\//g' -e "s/$/:$PORT\//g"
+# Linux ifconfig interesting lines are like: inet addr:192.168.0.5  Bcast:192.168.0.255  Mask:255.255.255.0
+# MacOS ifconfig interesting lines are like: inet 192.168.0.5 netmask 0xffffff00 broadcast 192.168.0.255
+# This awk script will split the second argument (either 'addr:ip' or just 'ip') and retrieve the 'ip' whatever the case.
+/sbin/ifconfig | grep -w inet | awk -v PORT=$PORT '{ split($2,ip,":"); if (ip[2] == "") useIp = $2; else useIp = ip[2]; print "http://" useIp ":" PORT }'
 
 python -m SimpleHTTPServer $PORT
 
