@@ -1,0 +1,19 @@
+# Shortcuts
+gsettings set org.mate.terminal.keybindings move-tab-left  '<Shift><Alt>Left'
+gsettings set org.mate.terminal.keybindings move-tab-right '<Shift><Alt>Right'
+gsettings set org.mate.terminal.keybindings prev-tab '<Alt>Left'
+gsettings set org.mate.terminal.keybindings next-tab '<Alt>Right'
+gsettings set org.mate.terminal.keybindings new-tab '<Primary>t'
+
+# F10 keys disables, as it is used to quit Midnight Commander
+gsettings set org.mate.terminal.global use-menu-accelerators false
+
+# Default profile update
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ background-color '#000000000000'
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ foreground-color '#FFFFFFFFFFFF'
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ use-theme-colors false
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ font 'Inconsolata Medium 12'
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ login-shell true
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ scrollback-unlimited true
+gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ background-darkness 0.95
+
