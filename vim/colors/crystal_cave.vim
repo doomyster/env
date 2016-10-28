@@ -46,7 +46,8 @@ hi link SpellRare       SpellBad
 hi link SpellLocal      SpellCap
 
 
-hi Visual               ctermfg=none            ctermbg=235     cterm=none
+" Visual: 23 is fine for video demo. 17 is fine.
+hi Visual               ctermfg=none            ctermbg=17      cterm=none
 hi Pmenu                ctermfg=none            ctermbg=19      cterm=none
 hi PmenuSel             ctermfg=172             ctermbg=52      cterm=none
 
