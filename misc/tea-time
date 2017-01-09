@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# requires package libnotify-bin
+
+TIME=$1
+
+case $TIME in
+	[1-9])
+		(chdir /
+		sleep ${TIME}m
+		notify-send -u normal -i /home/nicolas/usr/share/tea-time/tea.png "Tea Time !" "Tea is ready") </dev/null >/dev/null 2>&1 &
+		disown;;
+	*)
+		echo "Usage: $0 <MINUTES>" 1>&2
+		echo "  <MINUTES> must be an integer between [1-9]." 1>&2
+		exit 1;;
+esac
+
