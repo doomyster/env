@@ -60,6 +60,9 @@ set listchars=tab:▸\ ,eol:¬,nbsp:∎,trail:␣
 nnoremap <C-left> gT
 nnoremap <C-right> gt
 
+nnoremap <C-h> gT
+nnoremap <C-l> gt
+
 """"""""""""""""""""""""""""""""""
 " Move lines up or down one line "
 """"""""""""""""""""""""""""""""""
@@ -91,6 +94,7 @@ endfunc
 """"""""""""""""""""""""""""""
 set bg=dark	" Use appropriate colors on a dark background
 colorscheme crystal_cave
+let &colorcolumn=join(range(121,121),",")    " Hilight column 121, with color name 'ColorColumn'
 
 """"""""""""""""""""""""""
 " Open completion method "

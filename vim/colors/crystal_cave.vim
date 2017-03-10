@@ -47,7 +47,7 @@ hi link SpellLocal      SpellCap
 
 
 " Visual: 23 is fine for video demo. 17 is fine.
-hi Visual               ctermfg=none            ctermbg=17      cterm=none
+hi Visual               ctermfg=none            ctermbg=23      cterm=none
 hi Pmenu                ctermfg=none            ctermbg=19      cterm=none
 hi PmenuSel             ctermfg=172             ctermbg=52      cterm=none
 
@@ -68,3 +68,4 @@ hi Folded               ctermfg=51              ctermbg=54      cterm=none
 
 hi Todo                 ctermfg=9               ctermbg=none    cterm=underline,bold
 
+hi ColorColumn          ctermfg=none            ctermbg=52      cterm=bold
