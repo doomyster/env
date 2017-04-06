@@ -1,0 +1,5 @@
+# Sample to add in ~/.gitconfig:
+[include]
+        path = ${PATH_TO_THIS_DIR}/gitconfig_extra
+[core]
+	excludesfile = ${PATH_TO_THIS_DIR}/gitignore_globals

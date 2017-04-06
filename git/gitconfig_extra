@@ -1,0 +1,23 @@
+# Nicenv configuration {
+
+[diff]
+	tool = vimdiff
+
+[difftool]
+	prompt = false
+
+[pager]
+	diff =
+
+[core]
+	#excludesfile = /home/nicolas/devel/mine/env/git/gitignore
+	excludesfile = gitignore_globals
+
+[push]
+	default = simple
+
+[difftool "vimdiff"]
+	cmd = vim -d \"$LOCAL\" \"$REMOTE\"
+
+# } Nicenv configuration
+
