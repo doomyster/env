@@ -9,10 +9,6 @@
 [pager]
 	diff =
 
-[core]
-	#excludesfile = /home/nicolas/devel/mine/env/git/gitignore
-	excludesfile = gitignore_globals
-
 [push]
 	default = simple
 
