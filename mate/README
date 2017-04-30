@@ -1,0 +1,6 @@
+Install with:
+dconf load / < keybindings
+dconf load / < terminal
+dconf load / < workspaces
+
+

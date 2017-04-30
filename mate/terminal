@@ -1,19 +1,25 @@
-# Shortcuts
-gsettings set org.mate.terminal.keybindings move-tab-left  '<Shift><Alt>Left'
-gsettings set org.mate.terminal.keybindings move-tab-right '<Shift><Alt>Right'
-gsettings set org.mate.terminal.keybindings prev-tab '<Alt>Left'
-gsettings set org.mate.terminal.keybindings next-tab '<Alt>Right'
-gsettings set org.mate.terminal.keybindings new-tab '<Primary>t'
+[org/mate/terminal/keybindings]
+prev-tab='<Alt>Left'
+move-tab-right='<Shift><Alt>Right'
+next-tab='<Alt>Right'
+move-tab-left='<Shift><Alt>Left'
+new-tab='<Primary>t'
 
-# F10 keys disables, as it is used to quit Midnight Commander
-gsettings set org.mate.terminal.global use-menu-accelerators false
+[org/mate/terminal/profiles/default]
+foreground-color='#FFFFFFFFFFFF'
+visible-name='Default'
+login-shell=true
+palette='#2E2E34343636:#CCCC00000000:#4E4E9A9A0606:#C4C4A0A00000:#34346565A4A4:#757550507B7B:#060698209A9A:#D3D3D7D7CFCF:#555557575353:#EFEF29292929:#8A8AE2E23434:#FCFCE9E94F4F:#72729F9FCFCF:#ADAD7F7FA8A8:#3434E2E2E2E2:#EEEEEEEEECEC'
+background-darkness=0.94999999999999996
+use-system-font=false
+use-theme-colors=false
+background-type='transparent'
+font='Inconsolata Medium 14'
+allow-bold=true
+scrollback-unlimited=true
+bold-color='#000000000000'
+background-color='#000000000000'
 
-# Default profile update
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ background-color '#000000000000'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ foreground-color '#FFFFFFFFFFFF'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ use-theme-colors false
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ font 'Inconsolata Medium 12'
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ login-shell true
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ scrollback-unlimited true
-gsettings set org.mate.terminal.profile:/org/mate/terminal/profiles/default/ background-darkness 0.95
+[org/mate/terminal/global]
+use-menu-accelerators=false
 

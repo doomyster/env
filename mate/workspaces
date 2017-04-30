@@ -1,16 +1,21 @@
-# 4*8 workspaces
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 4
-gsettings set org.mate.Marco.general num-workspaces 32
+[org/mate/marco/global-keybindings]
+switch-to-workspace-right='<Mod4>Right'
+switch-to-workspace-left='<Mod4>Left'
+switch-to-workspace-down='<Mod4>Down'
+switch-to-workspace-up='<Mod4>Up'
 
-# Switch key bindings
-gsettings set org.mate.Marco.global-keybindings switch-to-workspace-down '<Mod4>Down'
-gsettings set org.mate.Marco.global-keybindings switch-to-workspace-left '<Mod4>Left'
-gsettings set org.mate.Marco.global-keybindings switch-to-workspace-right '<Mod4>Right'
-gsettings set org.mate.Marco.global-keybindings switch-to-workspace-up '<Mod4>Up'
+[org/mate/marco/window-keybindings]
+move-to-workspace-right='<Shift><Mod4>Right'
+move-to-workspace-left='<Shift><Mod4>Left'
+move-to-workspace-down='<Shift><Mod4>Down'
+move-to-workspace-up='<Shift><Mod4>Up'
 
-# Window move key bindings
-gsettings set org.mate.Marco.window-keybindings move-to-workspace-down '<Shift><Mod4>Down'
-gsettings set org.mate.Marco.window-keybindings move-to-workspace-left '<Shift><Mod4>Left'
-gsettings set org.mate.Marco.window-keybindings move-to-workspace-right '<Shift><Mod4>Right'
-gsettings set org.mate.Marco.window-keybindings move-to-workspace-up '<Shift><Mod4>Up'
+[org/mate/panel/objects/workspace-switcher/prefs]
+display-all-workspaces=true
+num-rows=4
+
+[org/gnome/desktop/wm/preferences]
+num-workspaces=32
+
+
 

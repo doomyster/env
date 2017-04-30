@@ -15,5 +15,8 @@
 [difftool "vimdiff"]
 	cmd = vim -d \"$LOCAL\" \"$REMOTE\"
 
+[core]
+	editor = vim
+
 # } Nicenv configuration
 

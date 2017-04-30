@@ -1,6 +1,11 @@
+[org/mate/desktop/keybindings/custom0]
+action='mate-terminal -e alsamixer'
+binding='<Mod4>s'
+name='Mixer'
 
-gsettings set org.mate.Marco.global-keybindings run-command-terminal '<Mod4>e'
-gsettings set org.mate.SettingsDaemon.plugins.media-keys www '<Mod4>w'
-gsettings set org.mate.Marco.window-keybindings toggle-maximized '<Mod4>a'
+[org/mate/marco/global-keybindings]
+run-command-terminal='<Mod4>e'
 
+[org/mate/marco/window-keybindings]
+toggle-maximized='<Mod4>a'
 

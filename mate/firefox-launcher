@@ -1,0 +1,143 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import re
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk, Gdk
+
+def getProfiles():
+#{
+	re_match = re.compile('^\\s*Name\\s*=\\s*([^\\s]+)\\s*$')
+	lstProf = []
+	profFile = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
+	try: #{
+		with open(profFile, 'r') as f: #{
+			for line in f: #{
+				m = re_match.match(line)
+				if m: #{
+					lstProf.append(m.group(1))
+				#}
+			#}
+		#}
+	#}
+	except IOError as e: #{
+		print >> sys.stderr, e
+	#}
+	return lstProf
+#}
+
+class MyWindow(Gtk.Window):
+#{
+	def __addButon__(self, index, label, keyaccels, cb = None):
+	#{
+		b = Gtk.Button.new_with_label(label)
+		if cb is None: #{
+			b.connect('clicked', self.on_prof_button_clicked, profiles[index])
+		#}
+		else: #{
+			b.connect('clicked', cb)
+		#}
+
+		for i in keyaccels: #{
+			self.accel.connect(i, 0, 0, self.on_accel)
+		#}
+		self.box.attach(b, 0, index, 1, 1)
+		return index+1
+	#}
+
+	def __init__(self, profiles):
+	#{
+		self.profiles = profiles
+		self.profile = None
+		Gtk.Window.__init__(self, title="Hello World")
+
+		self.box = Gtk.Grid()
+		self.add(self.box)
+
+		self.buttons = []
+		self.accel = Gtk.AccelGroup()
+		index = 0
+
+		for cur_profile in profiles: #{
+			label_prefix = ''
+			label = cur_profile
+			key_accels = []
+			if index <= 9: #{
+				label_prefix = str(index) + ' '
+				key_accels = [Gdk.KEY_0 + index, Gdk.KEY_KP_0 + index]
+			#}
+			if index == 0: #{
+				label = 'Provate Browsing'
+			#}
+
+			index = self.__addButon__(index, label_prefix + label, key_accels)
+		#}
+
+		index = self.__addButon__(index, 'c Cancel', [Gdk.KEY_c, Gdk.KEY_C, Gdk.KEY_Escape], self.on_cancel_button_clicked)
+		self.add_accel_group(self.accel)
+	#}
+
+	def on_accel(self, accel_group, acceleratable, key, modifier):
+	#{
+		if key in (Gdk.KEY_C, Gdk.KEY_c, Gdk.KEY_Escape): #{
+			Gtk.main_quit()
+		#}
+		else: #{
+			offset = None
+			if key >= Gdk.KEY_0 and key <= Gdk.KEY_9: #{
+				offset = Gdk.KEY_0
+			#}
+			elif key >= Gdk.KEY_KP_0 and key <= Gdk.KEY_KP_9: #{
+				offset = Gdk.KEY_KP_0
+			#}
+
+			if offset is not None: #{
+				max_id = len(self.profiles) -1
+				if int(key - offset) <= max_id: #{
+					self.profile = self.profiles[int(key - offset)]
+					Gtk.main_quit()
+				#}
+			#}
+		#}
+	#}
+
+	def on_cancel_button_clicked(self, widget, *data):
+	#{
+		Gtk.main_quit()
+	#}
+
+	def on_prof_button_clicked(self, widget, *data):
+	#{
+		self.profile = data[0]
+		Gtk.main_quit()
+	#}
+#}
+
+def run(prof_name):
+#{
+	args = ['firefox']
+	if len(prof_name) > 0: #{
+		args += ['-P', prof_name]
+	#}
+	else: #{
+		args += ['--private-window']
+	#}
+	os.execvp('/usr/bin/firefox', args)
+#}
+
+profiles = [''] + getProfiles()
+if len(profiles) <= 1: #{
+	run('')
+#}
+else: #{
+	win = MyWindow(profiles)
+	win.connect("delete-event", Gtk.main_quit)
+	win.show_all()
+	Gtk.main()
+	if win.profile is not None: #{
+		run(win.profile)
+	#}
+#}
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "[org/mate/desktop/keybindings/custom1]"
+echo "action='$1/firefox-launcher'"
+echo "binding='<Mod4>w'"
+echo "name='Firefox'"
+
