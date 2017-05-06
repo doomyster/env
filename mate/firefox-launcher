@@ -4,12 +4,29 @@ import os
 import sys
 import re
 import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk
+try: #{
+	gi.require_version('Gtk', '3.0')
+	from gi.repository import Gtk, Gdk
+	useGtk = 3
+#}
+except ValueError as e: #{
+	print >> sys.stderr, e
+	print >> sys.stderr, 'Trying with gtk2..'
+
+	try: #{
+		gi.require_version('Gtk', '2.0')
+		from gi.repository import Gtk, Gdk
+		useGtk = 2
+	#}
+	except ValueError as e: #{
+		print >> sys.stderr, e
+		exit(1)
+	#}
+#}
 
 def getProfiles():
 #{
-	re_match = re.compile('^\\s*Name\\s*=\\s*([^\\s]+)\\s*$')
+	re_match = re.compile('^\\s*Name\\s*=\\s*(.+?)\\s*$')
 	lstProf = []
 	profFile = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
 	try: #{
@@ -43,7 +60,12 @@ class MyWindow(Gtk.Window):
 		for i in keyaccels: #{
 			self.accel.connect(i, 0, 0, self.on_accel)
 		#}
-		self.box.attach(b, 0, index, 1, 1)
+		if useGtk == 3: #{
+			self.box.attach(b, 0, index, 1, 1)
+		#}
+		else: #{
+			self.box.pack_start(b, False, False, 0)
+		#}
 		return index+1
 	#}
 
@@ -53,7 +75,12 @@ class MyWindow(Gtk.Window):
 		self.profile = None
 		Gtk.Window.__init__(self, title="Hello World")
 
-		self.box = Gtk.Grid()
+		if useGtk == 3: #{
+			self.box = Gtk.Grid()
+		#}
+		else: #{
+			self.box = Gtk.VBox(homogeneous=True)
+		#}
 		self.add(self.box)
 
 		self.buttons = []
@@ -69,7 +96,7 @@ class MyWindow(Gtk.Window):
 				key_accels = [Gdk.KEY_0 + index, Gdk.KEY_KP_0 + index]
 			#}
 			if index == 0: #{
-				label = 'Provate Browsing'
+				label = 'Private Browsing'
 			#}
 
 			index = self.__addButon__(index, label_prefix + label, key_accels)
