@@ -105,9 +105,21 @@ fun! Toggle_cc()
 endfun
 nnoremap <F5> :call Toggle_cc()<RETURN>
 
+nnoremap <F6> :IndentGuidesToggle<RETURN>
+
 """"""""""""""""""""""""""
 " Open completion method "
 """"""""""""""""""""""""""
 set wildmode=longest,list,full
 set wildmenu
 
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
+set diffopt+=vertical

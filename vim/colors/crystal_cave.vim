@@ -69,3 +69,7 @@ hi Folded               ctermfg=51              ctermbg=54      cterm=none
 hi Todo                 ctermfg=9               ctermbg=none    cterm=underline,bold
 
 hi ColorColumn          ctermfg=none            ctermbg=52      cterm=bold
+
+hi IndentGuidesEven     ctermfg=none            ctermbg=238     cterm=none
+hi IndentGuidesOdd      ctermfg=none            ctermbg=236     cterm=none
+
