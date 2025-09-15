@@ -15,5 +15,5 @@ elif [ -x /sbin/ifconfig ]; then
 	/sbin/ifconfig | grep -w inet | awk -v PORT=$PORT '{ split($2, ip, ":"); if (ip[2] == "") useIp = $2; else useIp = ip[2]; print "http://" useIp ":" PORT }'
 fi
 
-python -m SimpleHTTPServer $PORT
+python3 -m http.server $PORT
 
